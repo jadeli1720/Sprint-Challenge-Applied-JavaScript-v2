@@ -21,10 +21,26 @@
 const cards = document.querySelector('.cards-container')
 console.log(cards)
 
-cards.appendChild(createCard())
+// cards.appendChild(createCard(data))
 
-const promise = axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
-console.log(promise)
+// const promise = axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+// console.log(promise)
+
+
+axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+.then(data => {
+    console.log('Articles Success', data)
+    const article = data.data.articles
+    console.log(article)
+    // article.forEach(data => {
+    //     const elements = createCard(data)
+    //     cards.appendChild(elements)
+    // })
+})
+.catch(error => {
+    console.log('The API is not working', error)
+});
+
 
 function createCard(data) {
     //create elements
@@ -47,7 +63,14 @@ function createCard(data) {
     headline.classList.add('headline');
     author.classList.add('author');
     imgContainer.classList.add('img-container');
+
+    //create content
+    headline.textContent = data;
+    img.src = data;
+    authorName.textContent = `By ${data}`;
     
-    //event listener?
+    // headline.textContent = data.headline;
+    // img.src = data.authorPhoto;
+    // authorName.textContent = `By ${data.authorName}`;
     return card;
 }
