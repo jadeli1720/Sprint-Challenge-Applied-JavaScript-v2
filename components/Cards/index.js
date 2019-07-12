@@ -29,19 +29,21 @@ console.log(cards)
 
 axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(data => {
-    console.log('Articles Success', data)
-    const article = data.data.articles
-    console.log(article)//this is an obj we need to loop over
-
+    console.log('Articles Success', data);
+    //this is an OBJECT we need to loop over. Inside of the articles OBJECT are arrays with key value pairs!!! for in loops allow you to iterate over them:
+    const article = data.data.articles;
+    
+    //   [i]       [arr]
     for(topics in article) { //way to loop over object
-        article[topics].forEach(data => {//way to loop over arrays
-             const elements = createCard(data)
-             cards.appendChild(elements)
-        })
+    //    arr[i]
+        article[topics].forEach(data => {//way to loop over arrays now that we have access to them
+             const elements = createCard(data);
+             cards.appendChild(elements);
+        });
     }
 })
 .catch(error => {
-    console.log('The API is not working', error)
+    console.log('The API is not working', error);
 });
 
 
@@ -55,11 +57,11 @@ function createCard(data) {
           authorName = document.createElement('span');//grandchild  
 
     //append elements
-    card.appendChild(headline)
-    card.appendChild(author)
-    author.appendChild(imgContainer)
-    imgContainer.appendChild(img)
-    author.appendChild(authorName)
+    card.appendChild(headline);
+    card.appendChild(author);
+    author.appendChild(imgContainer);
+    imgContainer.appendChild(img);
+    author.appendChild(authorName);
 
     //create styles
     card.classList.add('card');
