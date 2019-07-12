@@ -31,32 +31,18 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(data => {
     console.log('Articles Success', data)
     const article = data.data.articles
-    console.log(article)
+    console.log(article)//this is an obj we need to loop over
 
-    
-    // article.forEach((index, array) => {
-
-    //     // const elements = createCard(data)
-    //     // cards.appendChild(elements)
-    // })
+    for(topics in article) { //way to loop over object
+        article[topics].forEach(data => {//way to loop over arrays
+             const elements = createCard(data)
+             cards.appendChild(elements)
+        })
+    }
 })
 .catch(error => {
     console.log('The API is not working', error)
 });
-
-// function toArray(obj) {
-//     const result = []
-//     for (const prop in obj) {
-//         const value = obj[prop];
-//         if (typeof value === 'object') {
-//             result.push(toArray(value));
-//         }else {
-//             result.push(value);
-//         }
-//     }
-//     return result;
-// }
-// console.log(toArray(article))
 
 
 function createCard(data) {
@@ -80,14 +66,9 @@ function createCard(data) {
     headline.classList.add('headline');
     author.classList.add('author');
     imgContainer.classList.add('img-container');
-
-    //create content
-    headline.textContent = data;
-    img.src = data;
-    authorName.textContent = `By ${data}`;
     
-    // headline.textContent = data.headline;
-    // img.src = data.authorPhoto;
-    // authorName.textContent = `By ${data.authorName}`;
+    headline.textContent = data.headline;
+    img.src = data.authorPhoto;
+    authorName.textContent = `By ${data.authorName}`;
     return card;
 }
