@@ -10,29 +10,29 @@
 
 
 const tabsTopic = document.querySelector('.topics')
-tabsTopic.appendChild(createTabs())
 
 
-//promise test
-const promise = axios.get(`https://lambda-times-backend.herokuapp.com/topics`);
-console.log(promise);
+axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
+    .then(data => {
+        console.log('Success', data);
+        const topics = data.data.topics;
+        topics.forEach(data => {
+            const element = createTabs(data);
+            tabsTopic.appendChild(element);
+        })
+    })
 
-// axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
-//     .then(data => {
-//         console.log('Success', data)
-//     })
+    .catch(error => {
+        console.log('The API is currently down.', error)
+    })
 
-//     .catch(error => {
-//         console.log('The API is currently down.', error)
-//     })
-
-function createTabs() {
+function createTabs(data) {
     //create element
     const tab = document.createElement('div');
 
-    tab.classList.add('tab')
+    tab.classList.add('tab');
 
-    tab
+    tab.textContent = data;
 
-    return tab
+    return tab;
 }
