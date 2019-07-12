@@ -32,14 +32,31 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
     console.log('Articles Success', data)
     const article = data.data.articles
     console.log(article)
-    // article.forEach(data => {
-    //     const elements = createCard(data)
-    //     cards.appendChild(elements)
+
+    
+    // article.forEach((index, array) => {
+
+    //     // const elements = createCard(data)
+    //     // cards.appendChild(elements)
     // })
 })
 .catch(error => {
     console.log('The API is not working', error)
 });
+
+// function toArray(obj) {
+//     const result = []
+//     for (const prop in obj) {
+//         const value = obj[prop];
+//         if (typeof value === 'object') {
+//             result.push(toArray(value));
+//         }else {
+//             result.push(value);
+//         }
+//     }
+//     return result;
+// }
+// console.log(toArray(article))
 
 
 function createCard(data) {
