@@ -11,10 +11,8 @@
 
 const headerContainer = document.querySelector('.header-container');
 
-// console.log(headerContainer);
-
-//test
-headerContainer.appendChild(Header())
+//append function to headerContainer variable
+headerContainer.appendChild(Header());
 
 function Header() {
     //creating the elements
