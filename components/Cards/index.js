@@ -19,7 +19,7 @@
 // Create a card for each of the articles and add the card to the DOM.
 
 const cards = document.querySelector('.cards-container')
-console.log(cards)
+// console.log(cards)
 
 // cards.appendChild(createCard(data))
 
