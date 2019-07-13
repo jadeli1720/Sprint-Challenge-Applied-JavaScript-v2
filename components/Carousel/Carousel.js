@@ -64,7 +64,7 @@ console.log(img)
 
   // img.forEach(img => {
   //   console.log(img.length)
-  //   // img.style.display = "block"
+    // img.style.display = "block"
   // })
   
   
@@ -79,37 +79,32 @@ console.log(img)
   //   console.log('Sliding Right' + index)
   // })
 
-  slideLeft(() => {
-    console.log('Sliding Left' + index)
-    img[this.index].style.display = 'none'
-   if (index === 0){
-      index = imageArray.length - 1;
-   } else {
-     index--;
-   }
+  // slideLeft(() => {
+  //   console.log('Sliding Left' + index)
+  //   img[this.index].style.display = 'none'
+  //  if (index === 0){
+  //     index = imageArray.length - 1;
+  //  } else {
+  //    index--;
+  //  }
    
-  });
+  // });
 
   //event listeners
   leftButton.addEventListener('click', event => {
     console.log('Left button clicked', event.target)
-
-    // slideLeft(() => {
-    //   console.log('Sliding Left' + index)
-    //   img[this.index].style.display = 'none'
-    //  if (index === 0){
-    //     index = imageArray.length - 1;
-    //  } else {
-    //    index--;
-    //  }
-     
-    // });
-    carousel.appendChild(img);
+      // img.style.display = 'none'
+     if (index === 0){
+        index = imageArray.length - 1;
+     } else {
+       index--;
+     }
+     img.style.display = 'block'
+     carousel.appendChild(img);
   });
 
   rightButton.addEventListener('click', event => {
     console.log('Right button clicked', event.target)
-    slideRight();
     // carousel.appendChild(img);
   });
 
