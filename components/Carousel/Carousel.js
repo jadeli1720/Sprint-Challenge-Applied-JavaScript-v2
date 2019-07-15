@@ -23,7 +23,7 @@ const imageArray = [
   './assets/carousel/trees.jpeg',
   './assets/carousel/turntable.jpeg',
 ]
-console.log(imageArray)
+// console.log(imageArray)
 
 imageArray.forEach(image => {
   // console.log(image)
@@ -31,7 +31,7 @@ imageArray.forEach(image => {
 
 const carouselContainer = document.querySelector('.carousel-container')
 carouselContainer.appendChild(createCarousel());
-console.log(carouselContainer)
+// console.log(carouselContainer)
 
 
 
@@ -59,56 +59,54 @@ function createCarousel () {
   leftButton.textContent = '<';
   rightButton.textContent = '>';
   img.src = imageArray[index];//sets the src value to the values inside the array
-  // img.style.display= 'block'//This displays them
-console.log(img)
+  img.style.display= 'block'//This displays them....need to iterate over image to display different src
 
-  // img.forEach(img => {
-  //   console.log(img.length)
-    // img.style.display = "block"
-  // })
-  
-  
-  //What I need it to do
-  /*
-  1. Display the first image on page load(display block)
-  2. Iterate through img.src...img tag or index needs to change
-  
-  */
-
-  // slideRight(() => {
-  //   console.log('Sliding Right' + index)
-  // })
-
-  // slideLeft(() => {
-  //   console.log('Sliding Left' + index)
-  //   img[this.index].style.display = 'none'
-  //  if (index === 0){
-  //     index = imageArray.length - 1;
-  //  } else {
-  //    index--;
-  //  }
-   
-  // });
-
+ 
   //event listeners
   leftButton.addEventListener('click', event => {
-    console.log('Left button clicked', event.target)
-      // img.style.display = 'none'
-     if (index === 0){
-        index = imageArray.length - 1;
-     } else {
-       index--;
-     }
-     img.style.display = 'block'
+    // console.log('Left button clicked', event.target)
+    index --;
+    if (index < 0) {
+       index = imageArray.length - 1;
+    }
+    img.src = imageArray[index];
+     console.log("clicked left",index);
      carousel.appendChild(img);
   });
 
   rightButton.addEventListener('click', event => {
-    console.log('Right button clicked', event.target)
-    // carousel.appendChild(img);
+    // index ++
+    if (index >= 0) {
+      index = imageArray.length + 1;
+    } else {
+      index ++
+    }
+    img.src = imageArray[index];
+    img.style.display = 'block'
+    carousel.appendChild(img);
+    console.log("clicked right",index);
   });
 
 
   //return parent element
   return carousel;
-}
+} 
+
+
+// leftButton.addEventListener('click', event => {
+//   // console.log('Left button clicked', event.target)
+//    if (index === 0){
+//       index = imageArray.length - 1;
+//    } else {
+//      index--;
+//    }
+//    img.style.display = 'block'
+//    console.log("clicked left",index);
+//    carousel.appendChild(img);
+// });
+
+// right if (index === index + 1) {
+//   index = 0;
+// } else {
+//   index ++
+// }
