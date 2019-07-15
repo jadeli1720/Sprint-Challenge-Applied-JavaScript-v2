@@ -91,22 +91,3 @@ function createCarousel () {
   //return parent element
   return carousel;
 } 
-
-
-// leftButton.addEventListener('click', event => {
-//   // console.log('Left button clicked', event.target)
-//    if (index === 0){
-//       index = imageArray.length - 1;
-//    } else {
-//      index--;
-//    }
-//    img.style.display = 'block'
-//    console.log("clicked left",index);
-//    carousel.appendChild(img);
-// });
-
-// right if (index === index + 1) {
-//   index = 0;
-// } else {
-//   index ++
-// }
